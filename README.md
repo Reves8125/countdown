@@ -3,7 +3,7 @@
 Site estático para acompanhar duas datas:
 
 - 28/01/2027 — Demissão
-- 29/03/2027 — Last Day
+- 28/03/2027 — Last Day
 
 ## Publicar no GitHub Pages
 
