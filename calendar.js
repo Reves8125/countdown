@@ -257,19 +257,35 @@ function createMonth(year, month) {
 
     // Número do dia
 
-    const number =
-      document.createElement("span");
+   const number =
+  document.createElement("span");
+
+number.className =
+  "day-number";
+
+const isHoliday =
+  Object.prototype.hasOwnProperty.call(
+    HOLIDAYS,
+    key
+  );
 
 
-    number.className =
-      "day-number";
+// Se for feriado, mostra F em vez do número
+if (isHoliday) {
 
+  number.textContent = "F";
 
-    number.textContent =
-      day;
+  number.title = HOLIDAYS[key];
 
+  cell.title = HOLIDAYS[key];
 
-    cell.appendChild(number);
+} else {
+
+  number.textContent = day;
+
+}
+
+cell.appendChild(number);
 
 
     // ============================================================
@@ -284,13 +300,6 @@ function createMonth(year, month) {
 
     const isVacation =
       VACATION_DAYS.includes(
-        key
-      );
-
-
-    const isHoliday =
-      Object.prototype.hasOwnProperty.call(
-        HOLIDAYS,
         key
       );
 
@@ -327,60 +336,21 @@ function createMonth(year, month) {
     // FÉRIAS
     // ============================================================
 
-    if (
-      isVacation &&
-      !isHoliday
-    ) {
+    if (isVacation) {
 
-      cell.classList.add(
-        "day-cell--vacation"
-      );
+  cell.classList.add(
+    "day-cell--vacation"
+  );
 
+  const badge =
+    document.createElement("small");
 
-      const badge =
-        document.createElement("small");
+  badge.textContent =
+    "FÉRIAS";
 
+  cell.appendChild(badge);
 
-      badge.textContent =
-        "FÉRIAS";
-
-
-      cell.appendChild(badge);
-
-    }
-
-
-    // ============================================================
-    // FERIADO
-    // ============================================================
-
-    if (isHoliday) {
-
-      cell.classList.add(
-        "day-cell--holiday"
-      );
-
-
-      const badge =
-        document.createElement("small");
-
-
-      badge.textContent =
-        "FERIADO";
-
-
-      badge.title =
-        HOLIDAYS[key];
-
-
-      cell.title =
-        HOLIDAYS[key];
-
-
-      cell.appendChild(badge);
-
-    }
-
+}
 
     // ============================================================
     // DIAS QUE JÁ PASSARAM
