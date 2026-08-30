@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0b1020" />
+  <title>The Final Countdown</title>
+  <meta
+    name="description"
+    content="Contagem decrescente para a entrega da carta de demissão e último dia de trabalho."
+  />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="page-shell">
+    <header class="hero">
+      <p class="eyebrow">PROJECT FREEDOM</p>
+      <h1>The Final Countdown</h1>
+      <p class="subtitle">
+        Dois marcos. Um objetivo.
+      </p>
+    </header>
+
+    <section class="countdown-grid" aria-label="Contagens decrescentes">
+      <article class="countdown-card countdown-card--primary">
+        <div class="card-topline">
+          <span class="status-dot"></span>
+          <span class="card-label">MARCO 01</span>
+        </div>
+
+        <h2>Demissão</h2>
+        <p class="target-date">28 janeiro 2027</p>
+
+        <div class="countdown" id="resignation-countdown" aria-live="polite">
+          <div class="time-box">
+            <span class="time-value" data-unit="days">000</span>
+            <span class="time-label">dias</span>
+          </div>
+          <div class="time-box">
+            <span class="time-value" data-unit="hours">00</span>
+            <span class="time-label">horas</span>
+          </div>
+          <div class="time-box">
+            <span class="time-value" data-unit="minutes">00</span>
+            <span class="time-label">min</span>
+          </div>
+          <div class="time-box">
+            <span class="time-value" data-unit="seconds">00</span>
+            <span class="time-label">seg</span>
+          </div>
+        </div>
+
+        <div class="progress-wrap">
+          <div class="progress-meta">
+            <span>Progresso</span>
+            <strong id="resignation-progress-text">0%</strong>
+          </div>
+          <div class="progress-track">
+            <div class="progress-bar" id="resignation-progress"></div>
+          </div>
+        </div>
+
+        <p class="milestone-message" id="resignation-message">
+          Até entregares a carta.
+        </p>
+      </article>
+
+      <article class="countdown-card">
+        <div class="card-topline">
+          <span class="status-dot status-dot--alt"></span>
+          <span class="card-label">MARCO 02</span>
+        </div>
+
+        <h2>Last Day</h2>
+        <p class="target-date">29 março 2027</p>
+
+        <div class="countdown" id="lastday-countdown" aria-live="polite">
+          <div class="time-box">
+            <span class="time-value" data-unit="days">000</span>
+            <span class="time-label">dias</span>
+          </div>
+          <div class="time-box">
+            <span class="time-value" data-unit="hours">00</span>
+            <span class="time-label">horas</span>
+          </div>
+          <div class="time-box">
+            <span class="time-value" data-unit="minutes">00</span>
+            <span class="time-label">min</span>
+          </div>
+          <div class="time-box">
+            <span class="time-value" data-unit="seconds">00</span>
+            <span class="time-label">seg</span>
+          </div>
+        </div>
+
+        <div class="progress-wrap">
+          <div class="progress-meta">
+            <span>Progresso</span>
+            <strong id="lastday-progress-text">0%</strong>
+          </div>
+          <div class="progress-track">
+            <div class="progress-bar progress-bar--alt" id="lastday-progress"></div>
+          </div>
+        </div>
+
+        <p class="milestone-message" id="lastday-message">
+          Até ao teu último dia.
+        </p>
+      </article>
+    </section>
+
+    <section class="stats-panel">
+      <div class="stats-heading">
+        <div>
+          <p class="eyebrow">RESUMO</p>
+          <h2>O que falta</h2>
+        </div>
+        <p class="stats-note">Atualizado automaticamente no teu dispositivo.</p>
+      </div>
+
+      <div class="stats-grid">
+        <article class="stat-card">
+          <span class="stat-label">Dias corridos até à carta</span>
+          <strong class="stat-value" id="calendar-days-resignation">—</strong>
+        </article>
+
+        <article class="stat-card">
+          <span class="stat-label">Turnos estimados até à carta</span>
+          <strong class="stat-value" id="work-days-resignation">—</strong>
+        </article>
+
+        <article class="stat-card">
+          <span class="stat-label">Dias corridos até ao último dia</span>
+          <strong class="stat-value" id="calendar-days-lastday">—</strong>
+        </article>
+
+        <article class="stat-card">
+          <span class="stat-label">Turnos estimados até ao último dia</span>
+          <strong class="stat-value" id="work-days-lastday">—</strong>
+        </article>
+      </div>
+
+      <p class="work-note">
+        O cálculo de turnos assume folgas fixas à segunda e terça-feira. Férias podem ser
+        adicionadas no ficheiro <code>script.js</code>.
+      </p>
+    </section>
+
+    <footer>
+      <span id="today-label"></span>
+      <span class="footer-separator">•</span>
+      <span>One day closer.</span>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
