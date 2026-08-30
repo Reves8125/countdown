@@ -679,4 +679,123 @@ footer {
   .day-cross {
     font-size: 1.6rem;
   }
+}/* ============================================================
+   TIPOS DE DIA
+   ============================================================ */
+
+
+/* FOLGAS */
+
+.day-cell--dayoff {
+  background: rgba(148, 163, 184, 0.08);
+
+  border-color:
+    rgba(148, 163, 184, 0.18);
+}
+
+
+.day-cell--dayoff small {
+  color: #94a3b8;
+}
+
+
+
+/* FÉRIAS */
+
+.day-cell--vacation {
+  background:
+    rgba(250, 176, 5, 0.10);
+
+  border-color:
+    rgba(250, 176, 5, 0.45);
+}
+
+
+.day-cell--vacation small {
+  color: #ffd43b;
+}
+
+
+
+/* FERIADOS */
+
+.day-cell--holiday {
+  background:
+    rgba(255, 107, 107, 0.10);
+
+  border-color:
+    rgba(255, 107, 107, 0.45);
+}
+
+
+.day-cell--holiday small {
+  color: #ff8787;
+}
+
+
+
+/* Etiquetas */
+
+.day-cell small {
+
+  position: absolute;
+
+  bottom: 4px;
+
+  width: 100%;
+
+  text-align: center;
+
+  font-size: 0.38rem;
+
+  font-weight: 800;
+
+  letter-spacing: 0.05em;
+
+  line-height: 1;
+
+}
+
+
+
+/* Número do dia */
+
+.day-number {
+
+  position: relative;
+
+  z-index: 3;
+
+}
+
+
+
+/* Cruz dos dias passados */
+
+.day-cross {
+
+  z-index: 4;
+
+  pointer-events: none;
+
+}
+
+
+
+/* ============================================================
+   LEGENDA
+   ============================================================ */
+
+.legend-dayoff {
+  background: #94a3b8;
+}
+
+
+.legend-vacation {
+  background: #ffd43b;
+}
+
+
+.legend-holiday {
+  background: #ff8787;
 }
