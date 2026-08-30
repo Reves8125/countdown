@@ -1,1 +1,241 @@
-<!DOCTYPE html><html lang="pt-PT"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Calendário — Project Freedom</title><link rel="stylesheet" href="style.css"></head><body><main class="page-shell"><nav class="top-nav"><a class="nav-brand" href="index.html">PROJECT FREEDOM</a><div class="nav-links"><a class="nav-link" href="index.html">Countdown</a><a class="nav-link active" href="calendar.html">Calendário</a></div></nav><header class="hero calendar-hero"><p class="eyebrow">DAY BY DAY</p><h1>Calendário</h1><p class="subtitle">Cada dia que passa fica para trás.</p></header><section class="calendar-legend"><span><i class="legend-dot legend-past"></i>Dia passado</span><span><i class="legend-dot legend-today"></i>Hoje</span><span><i class="legend-dot legend-resignation"></i>Demissão</span><span><i class="legend-dot legend-last"></i>Last Day</span></section><section id="calendar-grid" class="calendar-grid"></section><footer><span id="calendar-today-label"></span><span>•</span><span>Keep going.</span></footer></main><script src="calendar.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="pt-PT">
+
+<head>
+
+  <meta charset="UTF-8" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <meta
+    name="theme-color"
+    content="#0b1020"
+  />
+
+  <title>
+    Calendário — Project Freedom
+  </title>
+
+  <meta
+    name="description"
+    content="Calendário visual até ao último dia de trabalho."
+  />
+
+  <link
+    rel="stylesheet"
+    href="style.css"
+  />
+
+</head>
+
+
+<body>
+
+  <main class="page-shell">
+
+
+    <!-- ======================================================
+         NAVEGAÇÃO
+         ====================================================== -->
+
+    <nav class="top-nav">
+
+      <a
+        class="nav-brand"
+        href="index.html"
+      >
+        PROJECT FREEDOM
+      </a>
+
+
+      <div class="nav-links">
+
+        <a
+          class="nav-link"
+          href="index.html"
+        >
+          Countdown
+        </a>
+
+
+        <a
+          class="nav-link active"
+          href="calendar.html"
+        >
+          Calendário
+        </a>
+
+      </div>
+
+    </nav>
+
+
+    <!-- ======================================================
+         CABEÇALHO
+         ====================================================== -->
+
+    <header class="hero calendar-hero">
+
+      <p class="eyebrow">
+        DAY BY DAY
+      </p>
+
+
+      <h1>
+        Calendário
+      </h1>
+
+
+      <p class="subtitle">
+        Cada dia que passa fica para trás.
+      </p>
+
+    </header>
+
+
+    <!-- ======================================================
+         LEGENDA
+         ====================================================== -->
+
+    <section class="calendar-legend">
+
+
+      <span>
+
+        <i
+          class="legend-dot legend-past"
+        ></i>
+
+        Dia passado
+
+      </span>
+
+
+      <span>
+
+        <i
+          class="legend-dot legend-today"
+        ></i>
+
+        Hoje
+
+      </span>
+
+
+      <span>
+
+        <i
+          class="legend-dot legend-dayoff"
+        ></i>
+
+        Folga
+
+      </span>
+
+
+      <span>
+
+        <i
+          class="legend-dot legend-vacation"
+        ></i>
+
+        Férias
+
+      </span>
+
+
+      <span>
+
+        <strong>
+          F
+        </strong>
+
+        Feriado
+
+      </span>
+
+
+      <span>
+
+        <i
+          class="legend-dot legend-resignation"
+        ></i>
+
+        Demissão
+
+      </span>
+
+
+      <span>
+
+        <i
+          class="legend-dot legend-last"
+        ></i>
+
+        Last Day
+
+      </span>
+
+
+    </section>
+
+
+    <!-- ======================================================
+         CALENDÁRIO
+         ====================================================== -->
+
+    <section
+      id="calendar-grid"
+      class="calendar-grid"
+      aria-label="Calendário até ao último dia"
+    >
+
+      <!--
+        Os meses e os dias são criados automaticamente
+        pelo ficheiro calendar.js
+      -->
+
+    </section>
+
+
+    <!-- ======================================================
+         RODAPÉ
+         ====================================================== -->
+
+    <footer>
+
+      <span
+        id="calendar-today-label"
+      ></span>
+
+
+      <span
+        class="footer-separator"
+      >
+        •
+      </span>
+
+
+      <span>
+        Keep going.
+      </span>
+
+    </footer>
+
+
+  </main>
+
+
+  <!-- ========================================================
+       JAVASCRIPT
+       ======================================================== -->
+
+  <script src="calendar.js"></script>
+
+
+</body>
+
+</html>
