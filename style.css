@@ -716,24 +716,6 @@ footer {
 }
 
 
-
-/* FERIADOS */
-
-.day-cell--holiday {
-  background:
-    rgba(255, 107, 107, 0.10);
-
-  border-color:
-    rgba(255, 107, 107, 0.45);
-}
-
-
-.day-cell--holiday small {
-  color: #ff8787;
-}
-
-
-
 /* Etiquetas */
 
 .day-cell small {
@@ -795,7 +777,11 @@ footer {
   background: #ffd43b;
 }
 
+.day-number {
+  position: relative;
+  z-index: 3;
+}
 
-.legend-holiday {
-  background: #ff8787;
+.day-cell .day-number {
+  font-weight: 700;
 }
