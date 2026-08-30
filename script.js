@@ -4,8 +4,8 @@
 
 // O horário definido aqui é 23:59:59 em cada data.
 // Se preferires uma hora específica (ex.: 17:00), altera abaixo.
-const RESIGNATION_DATE = new Date("2027-01-28T23:59:59");
-const LAST_DAY_DATE = new Date("2027-03-29T23:59:59");
+const RESIGNATION_DATE = new Date("2027-01-28T12:00:00");
+const LAST_DAY_DATE = new Date("2027-03-28T16:00:00");
 
 // Data a partir da qual calculamos a percentagem de progresso.
 // 30 agosto 2026 = início deste pequeno "projecto countdown".
@@ -18,7 +18,19 @@ const WEEKLY_DAYS_OFF = [1, 2];
 // Adiciona aqui férias/dias em que não trabalhas, no formato YYYY-MM-DD.
 // Exemplo:
 // const VACATION_DAYS = ["2026-12-14", "2026-12-15", "2026-12-16"];
-const VACATION_DAYS = [];
+const VACATION_DAYS = [
+  "2026-12-23",
+  "2026-12-24",
+  "2026-12-26",
+  "2026-12-27"
+];
+
+// Adiciona aqui os feriados em dias efetivos não trabalhados, no formato YYYY-MM-DD.
+// Exemplo:
+// const HOLIDAYS = ["2026-12-25", "2027-01-01"];
+const HOLIDAYS = [
+  "2026-12-25"
+];
 
 // ============================================================
 // FUNÇÕES
@@ -111,8 +123,9 @@ function workDaysRemaining(targetDate) {
 
     const isWeeklyDayOff = WEEKLY_DAYS_OFF.includes(dayOfWeek);
     const isVacation = VACATION_DAYS.includes(key);
+    const isHoliday = HOLIDAYS.includes(key);
 
-    if (!isWeeklyDayOff && !isVacation) {
+    if (!isWeeklyDayOff && !isVacation && !isHoliday) {
       count++;
     }
 
