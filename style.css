@@ -785,3 +785,12 @@ footer {
 .day-cell .day-number {
   font-weight: 700;
 }
+
+/* ============================================================
+   LETRA F DOS FERIADOS
+   ============================================================ */
+
+.day-cell .day-number[title] {
+  color: #ff8787;
+  font-weight: 800;
+}
