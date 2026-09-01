@@ -1,67 +1,813 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+
+/* ============================================================
+   VARIÁVEIS
+   ============================================================ */
+
+:root {
+
+  --bg: #07101c;
+
+  --panel:
+    rgba(14, 25, 43, 0.82);
+
+  --line:
+    rgba(255, 255, 255, 0.09);
+
+  --text:
+    #f4f7fb;
+
+  --muted:
+    #8fa1b8;
+
+  --accent:
+    #63e6be;
+
+  --accent-2:
+    #74c0fc;
+
+  --danger:
+    #ff8787;
+
+  --shadow:
+    0 24px 70px
+    rgba(0, 0, 0, 0.34);
+
+}
+
+
+/* ============================================================
+   BASE
+   ============================================================ */
+
+* {
+  box-sizing: border-box;
+}
+
+
+html {
+  color-scheme: dark;
+}
+
+
+body {
+
+  margin: 0;
+
+  min-height: 100vh;
+
+  font-family:
+    Inter,
+    system-ui,
+    sans-serif;
+
+  color:
+    var(--text);
+
+  background:
+
+    radial-gradient(
+      circle at top left,
+      rgba(99, 230, 190, 0.08),
+      transparent 30%
+    ),
+
+    radial-gradient(
+      circle at top right,
+      rgba(116, 192, 252, 0.08),
+      transparent 28%
+    ),
+
+    linear-gradient(
+      180deg,
+      #07101c 0%,
+      #0a1220 55%,
+      #07101c 100%
+    );
+
+}
+
+
+body::before {
+
+  content: "";
+
+  position: fixed;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  background-image:
+
+    linear-gradient(
+      rgba(255,255,255,0.018) 1px,
+      transparent 1px
+    ),
+
+    linear-gradient(
+      90deg,
+      rgba(255,255,255,0.018) 1px,
+      transparent 1px
+    );
+
+  background-size:
+    32px 32px;
+
+}
+
+
+.page-shell {
+
+  width:
+    min(
+      1180px,
+      calc(100% - 32px)
+    );
+
+  margin:
+    auto;
+
+  padding:
+    28px 0 34px;
+
+}
+
+
 /* ============================================================
    NAVEGAÇÃO
    ============================================================ */
 
 .top-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 
-  padding: 12px 0 34px;
+  display:
+    flex;
+
+  justify-content:
+    space-between;
+
+  align-items:
+    center;
+
+  padding:
+    12px 0 34px;
+
 }
 
 
 .nav-brand {
-  color: var(--text);
 
-  text-decoration: none;
+  color:
+    var(--text);
 
-  font-weight: 800;
+  text-decoration:
+    none;
 
-  letter-spacing: 0.14em;
+  font-weight:
+    800;
 
-  font-size: 0.78rem;
+  letter-spacing:
+    0.14em;
+
+  font-size:
+    0.78rem;
+
 }
 
 
 .nav-links {
-  display: flex;
 
-  gap: 8px;
+  display:
+    flex;
 
-  padding: 5px;
+  gap:
+    8px;
 
-  border: 1px solid var(--line);
+  padding:
+    5px;
 
-  border-radius: 14px;
+  border:
+    1px solid
+    var(--line);
+
+  border-radius:
+    14px;
 
   background:
-    rgba(255, 255, 255, 0.025);
+    rgba(
+      255,
+      255,
+      255,
+      0.025
+    );
+
 }
 
 
 .nav-link {
-  color: var(--muted);
 
-  text-decoration: none;
+  color:
+    var(--muted);
 
-  padding: 9px 13px;
+  text-decoration:
+    none;
 
-  border-radius: 10px;
+  padding:
+    9px 13px;
 
-  font-size: 0.82rem;
+  border-radius:
+    10px;
 
-  font-weight: 700;
+  font-size:
+    0.82rem;
+
+  font-weight:
+    700;
+
 }
 
 
 .nav-link.active,
 .nav-link:hover {
 
-  color: var(--text);
+  color:
+    var(--text);
 
   background:
-    rgba(255, 255, 255, 0.07);
+    rgba(
+      255,
+      255,
+      255,
+      0.07
+    );
+
+}
+
+
+/* ============================================================
+   HERO
+   ============================================================ */
+
+.hero {
+
+  text-align:
+    center;
+
+  margin:
+    25px 0 42px;
+
+}
+
+
+.eyebrow {
+
+  margin:
+    0 0 10px;
+
+  font-size:
+    0.76rem;
+
+  letter-spacing:
+    0.2em;
+
+  font-weight:
+    800;
+
+  color:
+    var(--accent);
+
+}
+
+
+.hero h1,
+.countdown-card h2,
+.stats-heading h2,
+.month-card h2 {
+
+  font-family:
+    "Space Grotesk",
+    Inter,
+    sans-serif;
+
+}
+
+
+.hero h1 {
+
+  margin:
+    0;
+
+  font-size:
+    clamp(
+      2.4rem,
+      6vw,
+      5.4rem
+    );
+
+  line-height:
+    0.95;
+
+  letter-spacing:
+    -0.05em;
+
+}
+
+
+.subtitle {
+
+  margin:
+    16px 0 0;
+
+  color:
+    var(--muted);
+
+}
+
+
+/* ============================================================
+   COUNTDOWN
+   ============================================================ */
+
+.countdown-grid {
+
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(0, 1fr)
+    );
+
+  gap:
+    22px;
+
+}
+
+
+.countdown-card,
+.stats-panel,
+.month-card {
+
+  border:
+    1px solid
+    var(--line);
+
+  background:
+
+    linear-gradient(
+      180deg,
+      rgba(18, 31, 52, 0.94),
+      rgba(10, 19, 32, 0.92)
+    );
+
+  box-shadow:
+    var(--shadow);
+
+}
+
+
+.countdown-card {
+
+  border-radius:
+    28px;
+
+  padding:
+    30px;
+
+}
+
+
+.card-topline {
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  gap:
+    10px;
+
+  color:
+    var(--muted);
+
+  font-size:
+    0.75rem;
+
+  letter-spacing:
+    0.16em;
+
+  font-weight:
+    700;
+
+}
+
+
+.status-dot {
+
+  width:
+    9px;
+
+  height:
+    9px;
+
+  border-radius:
+    50%;
+
+  background:
+    var(--accent);
+
+}
+
+
+.status-dot--alt {
+
+  background:
+    var(--accent-2);
+
+}
+
+
+.countdown-card h2 {
+
+  margin:
+    30px 0 4px;
+
+  font-size:
+    clamp(
+      2rem,
+      4vw,
+      3.1rem
+    );
+
+  letter-spacing:
+    -0.045em;
+
+}
+
+
+.target-date {
+
+  margin:
+    0;
+
+  color:
+    var(--muted);
+
+  text-transform:
+    uppercase;
+
+  letter-spacing:
+    0.1em;
+
+  font-size:
+    0.78rem;
+
+  font-weight:
+    700;
+
+}
+
+
+/* ============================================================
+   TEMPO
+   ============================================================ */
+
+.countdown {
+
+  display:
+    grid;
+
+  grid-template-columns:
+    1.25fr
+    repeat(3, 1fr);
+
+  gap:
+    9px;
+
+  margin:
+    34px 0 28px;
+
+}
+
+
+.time-box {
+
+  padding:
+    18px 8px 14px;
+
+  text-align:
+    center;
+
+  border:
+    1px solid
+    var(--line);
+
+  border-radius:
+    17px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.025
+    );
+
+}
+
+
+.time-value {
+
+  display:
+    block;
+
+  font-family:
+    "Space Grotesk",
+    monospace;
+
+  font-size:
+    clamp(
+      1.65rem,
+      4vw,
+      2.7rem
+    );
+
+  font-weight:
+    700;
+
+  line-height:
+    1;
+
+}
+
+
+.time-label {
+
+  display:
+    block;
+
+  margin-top:
+    9px;
+
+  color:
+    var(--muted);
+
+  font-size:
+    0.68rem;
+
+  font-weight:
+    700;
+
+  text-transform:
+    uppercase;
+
+}
+
+
+/* ============================================================
+   BARRA DE PROGRESSO
+   ============================================================ */
+
+.progress-meta {
+
+  display:
+    flex;
+
+  justify-content:
+    space-between;
+
+  align-items:
+    center;
+
+  color:
+    var(--muted);
+
+  font-size:
+    0.78rem;
+
+}
+
+
+.progress-track {
+
+  height:
+    8px;
+
+  margin-top:
+    9px;
+
+  overflow:
+    hidden;
+
+  border-radius:
+    99px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.06
+    );
+
+}
+
+
+.progress-bar {
+
+  width:
+    0;
+
+  height:
+    100%;
+
+  border-radius:
+    99px;
+
+  background:
+
+    linear-gradient(
+      90deg,
+      rgba(99, 230, 190, 0.45),
+      var(--accent)
+    );
+
+}
+
+
+.progress-bar--alt {
+
+  background:
+
+    linear-gradient(
+      90deg,
+      rgba(116, 192, 252, 0.42),
+      var(--accent-2)
+    );
+
+}
+
+
+.milestone-message {
+
+  color:
+    var(--muted);
+
+}
+
+
+/* ============================================================
+   RESUMO
+   ============================================================ */
+
+.stats-panel {
+
+  margin-top:
+    22px;
+
+  border-radius:
+    28px;
+
+  padding:
+    30px;
+
+}
+
+
+.stats-heading {
+
+  display:
+    flex;
+
+  justify-content:
+    space-between;
+
+  align-items:
+    center;
+
+  gap:
+    20px;
+
+}
+
+
+.stats-heading h2 {
+
+  margin:
+    0;
+
+}
+
+
+.stats-note {
+
+  color:
+    var(--muted);
+
+}
+
+
+.stats-grid {
+
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  gap:
+    12px;
+
+  margin-top:
+    22px;
+
+}
+
+
+.stat-card {
+
+  min-height:
+    124px;
+
+  padding:
+    18px;
+
+  border-radius:
+    18px;
+
+  border:
+    1px solid
+    var(--line);
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.025
+    );
+
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+  justify-content:
+    space-between;
+
+}
+
+
+.stat-label {
+
+  color:
+    var(--muted);
+
+  font-size:
+    0.78rem;
+
+}
+
+
+.stat-value {
+
+  font-family:
+    "Space Grotesk",
+    sans-serif;
+
+  font-size:
+    2rem;
+
+}
+
+
+.work-note {
+
+  color:
+    var(--muted);
+
+  font-size:
+    0.78rem;
+
+  margin-top:
+    18px;
+
+}
+
+
+/* ============================================================
+   CALENDÁRIO — HERO
+   ============================================================ */
+
+.calendar-hero {
+
+  margin-bottom:
+    25px;
+
 }
 
 
@@ -71,43 +817,57 @@
 
 .calendar-legend {
 
-  display: flex;
+  display:
+    flex;
 
-  flex-wrap: wrap;
+  flex-wrap:
+    wrap;
 
-  justify-content: center;
+  justify-content:
+    center;
 
-  gap: 18px;
+  gap:
+    18px;
 
-  margin-bottom: 24px;
+  margin-bottom:
+    24px;
 
-  color: var(--muted);
+  color:
+    var(--muted);
 
-  font-size: 0.78rem;
+  font-size:
+    0.78rem;
 
 }
 
 
 .calendar-legend span {
 
-  display: flex;
+  display:
+    flex;
 
-  align-items: center;
+  align-items:
+    center;
 
-  gap: 7px;
+  gap:
+    7px;
 
 }
 
 
 .legend-dot {
 
-  width: 9px;
+  width:
+    9px;
 
-  height: 9px;
+  height:
+    9px;
 
-  border-radius: 50%;
+  border-radius:
+    50%;
 
-  display: inline-block;
+  display:
+    inline-block;
 
 }
 
@@ -144,9 +904,11 @@
 
 .legend-holiday-symbol {
 
-  color: #ff8787;
+  color:
+    #ff8787;
 
-  font-weight: 800;
+  font-weight:
+    800;
 
 }
 
@@ -157,7 +919,8 @@
 
 .calendar-grid {
 
-  display: grid;
+  display:
+    grid;
 
   grid-template-columns:
     repeat(
@@ -165,30 +928,17 @@
       minmax(0, 1fr)
     );
 
-  gap: 20px;
+  gap:
+    20px;
 
 }
 
 
 /* ============================================================
-   CARTÃO DE CADA MÊS
+   CARTÕES DOS MESES
    ============================================================ */
 
 .month-card {
-
-  border:
-    1px solid
-    var(--line);
-
-  background:
-    linear-gradient(
-      180deg,
-      rgba(18, 31, 52, 0.94),
-      rgba(10, 19, 32, 0.92)
-    );
-
-  box-shadow:
-    var(--shadow);
 
   border-radius:
     24px;
@@ -201,13 +951,11 @@
 
 .month-card h2 {
 
-  font-family:
-    "Space Grotesk",
-    Inter,
-    sans-serif;
-
   margin:
     0 0 18px;
+
+  letter-spacing:
+    -0.03em;
 
 }
 
@@ -219,12 +967,14 @@
 .weekdays,
 .days-grid {
 
-  display: grid;
+  display:
+    grid;
 
   grid-template-columns:
     repeat(7, 1fr);
 
-  gap: 6px;
+  gap:
+    6px;
 
 }
 
@@ -251,11 +1001,14 @@
   font-weight:
     700;
 
+  text-transform:
+    uppercase;
+
 }
 
 
 /* ============================================================
-   CÉLULA DE CADA DIA
+   CÉLULAS DO CALENDÁRIO
    ============================================================ */
 
 .day-cell {
@@ -295,6 +1048,9 @@
   justify-content:
     center;
 
+  min-width:
+    0;
+
 }
 
 
@@ -307,7 +1063,7 @@
 
 
 /* ============================================================
-   NÚMERO DO DIA
+   NÚMERO / SÍMBOLO DO DIA
    ============================================================ */
 
 .day-number {
@@ -327,10 +1083,6 @@
 }
 
 
-/* ============================================================
-   FERIADOS
-   ============================================================ */
-
 .holiday-symbol {
 
   color:
@@ -341,6 +1093,10 @@
 
 }
 
+
+/* ============================================================
+   NOME DO FERIADO
+   ============================================================ */
 
 .holiday-name {
 
@@ -453,7 +1209,7 @@
 
 
 /* ============================================================
-   DIA ATUAL
+   HOJE
    ============================================================ */
 
 .day-cell--today {
@@ -462,6 +1218,7 @@
     var(--accent);
 
   box-shadow:
+
     inset
     0 0 0 1px
     var(--accent),
@@ -478,7 +1235,7 @@
 
 
 /* ============================================================
-   DIA DA CARTA
+   CARTA
    ============================================================ */
 
 .day-cell--resignation {
@@ -573,13 +1330,21 @@
 
 
 /* ============================================================
-   DIAS JÁ PASSADOS
+   DIAS PASSADOS
    ============================================================ */
 
 .day-cell--past {
 
   color:
     #64748b;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.012
+    );
 
 }
 
@@ -604,6 +1369,9 @@
   font-size:
     2.15rem;
 
+  line-height:
+    1;
+
   color:
     rgba(
       255,
@@ -611,6 +1379,9 @@
       255,
       0.19
     );
+
+  font-weight:
+    300;
 
   transform:
     rotate(-8deg);
@@ -625,12 +1396,42 @@
 
 
 /* ============================================================
-   RESPONSIVO
+   FOOTER
    ============================================================ */
 
-@media
-(max-width: 860px) {
+footer {
 
+  display:
+    flex;
+
+  justify-content:
+    center;
+
+  align-items:
+    center;
+
+  gap:
+    10px;
+
+  padding:
+    26px 8px 0;
+
+  color:
+    var(--muted);
+
+  font-size:
+    0.76rem;
+
+}
+
+
+/* ============================================================
+   RESPONSIVE — TABLET
+   ============================================================ */
+
+@media (max-width: 860px) {
+
+  .countdown-grid,
   .calendar-grid {
 
     grid-template-columns:
@@ -638,11 +1439,33 @@
 
   }
 
+
+  .stats-grid {
+
+    grid-template-columns:
+      repeat(2, 1fr);
+
+  }
+
 }
 
 
-@media
-(max-width: 520px) {
+/* ============================================================
+   RESPONSIVE — TELEMÓVEL
+   ============================================================ */
+
+@media (max-width: 520px) {
+
+  .page-shell {
+
+    width:
+      min(
+        calc(100% - 20px),
+        1180px
+      );
+
+  }
+
 
   .top-nav {
 
@@ -663,6 +1486,8 @@
   }
 
 
+  .countdown-card,
+  .stats-panel,
   .month-card {
 
     padding:
@@ -670,6 +1495,33 @@
 
     border-radius:
       20px;
+
+  }
+
+
+  .countdown {
+
+    gap:
+      5px;
+
+  }
+
+
+  .time-box {
+
+    padding:
+      14px 3px 11px;
+
+  }
+
+
+  .stats-heading {
+
+    align-items:
+      flex-start;
+
+    flex-direction:
+      column;
 
   }
 
