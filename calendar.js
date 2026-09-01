@@ -44,25 +44,65 @@ const VACATION_DAYS = [
 
 const HOLIDAYS = {
 
-  // 2026
-  "2026-10-05": "Implantação da República",
-  "2026-11-01": "Dia de Todos os Santos",
-  "2026-12-01": "Restauração da Independência",
-  "2026-12-08": "Imaculada Conceição",
-  "2026-12-25": "Natal",
+  "2026-10-05": {
+    name: "Implantação da República",
+    short: "República",
+    symbol: "F"
+  },
 
-  // 2027
-  "2027-01-01": "Ano Novo",
-  "2027-03-26": "Sexta-Feira Santa",
-  "2027-03-28": "Páscoa",
+  "2026-11-01": {
+    name: "Dia de Todos os Santos",
+    short: "Todos Santos",
+    symbol: "F"
+  },
 
-  // Feriado Municipal de Loulé
-  "2027-05-06": "Feriado Municipal de Loulé"
+  "2026-12-01": {
+    name: "Restauração da Independência",
+    short: "Restauração",
+    symbol: "F"
+  },
+
+  "2026-12-08": {
+    name: "Imaculada Conceição",
+    short: "Imaculada",
+    symbol: "F"
+  },
+
+  "2026-12-25": {
+    name: "Natal",
+    short: "Natal",
+    symbol: "N"
+  },
+
+  "2027-01-01": {
+    name: "Ano Novo",
+    short: "Ano Novo",
+    symbol: "F"
+  },
+
+  "2027-03-26": {
+    name: "Sexta-Feira Santa",
+    short: "Sexta Sta.",
+    symbol: "F"
+  },
+
+  "2027-03-28": {
+    name: "Páscoa",
+    short: "Páscoa",
+    symbol: "P"
+  },
+
+  "2027-05-06": {
+    name: "Feriado Municipal de Loulé",
+    short: "Loulé",
+    symbol: "F"
+  }
+
 };
 
 
 // ============================================================
-// NOMES
+// NOMES DOS MESES E DIAS
 // ============================================================
 
 const monthNames = [
@@ -139,7 +179,7 @@ function createMonth(year, month) {
 
 
   // ----------------------------------------------------------
-  // TÍTULO
+  // TÍTULO DO MÊS
   // ----------------------------------------------------------
 
   const title =
@@ -152,7 +192,7 @@ function createMonth(year, month) {
 
 
   // ----------------------------------------------------------
-  // CABEÇALHO DOS DIAS DA SEMANA
+  // DIAS DA SEMANA
   // ----------------------------------------------------------
 
   const weekdays =
@@ -178,7 +218,7 @@ function createMonth(year, month) {
 
 
   // ----------------------------------------------------------
-  // GRELHA
+  // GRELHA DOS DIAS
   // ----------------------------------------------------------
 
   const daysGrid =
@@ -192,20 +232,18 @@ function createMonth(year, month) {
     new Date(year, month, 1);
 
 
-  // Converter domingo=0 para calendário iniciado à segunda
-
   let startIndex =
     firstDay.getDay() - 1;
 
 
   if (startIndex < 0) {
-
     startIndex = 6;
-
   }
 
 
-  // Espaços vazios antes do dia 1
+  // ----------------------------------------------------------
+  // ESPAÇOS ANTES DO DIA 1
+  // ----------------------------------------------------------
 
   for (
     let i = 0;
@@ -294,7 +332,7 @@ function createMonth(year, month) {
 
 
     // --------------------------------------------------------
-    // CÉLULA
+    // CRIAR CÉLULA
     // --------------------------------------------------------
 
     const cell =
@@ -304,12 +342,50 @@ function createMonth(year, month) {
       "day-cell";
 
 
-    // --------------------------------------------------------
-    // NÚMERO DO DIA OU F
-    // --------------------------------------------------------
+    // ========================================================
+    // NOME DO FERIADO NO TOPO
+    // ========================================================
+
+    if (isHoliday) {
+
+      const holiday =
+        HOLIDAYS[key];
+
+
+      const holidayName =
+        document.createElement("span");
+
+
+      holidayName.className =
+        "holiday-name";
+
+
+      holidayName.textContent =
+        holiday.short;
+
+
+      holidayName.title =
+        holiday.name;
+
+
+      cell.title =
+        holiday.name;
+
+
+      cell.appendChild(
+        holidayName
+      );
+
+    }
+
+
+    // ========================================================
+    // NÚMERO DO DIA OU SÍMBOLO DO FERIADO
+    // ========================================================
 
     const number =
       document.createElement("span");
+
 
     number.className =
       "day-number";
@@ -317,13 +393,21 @@ function createMonth(year, month) {
 
     if (isHoliday) {
 
-      number.textContent = "F";
+      const holiday =
+        HOLIDAYS[key];
+
+
+      number.textContent =
+        holiday.symbol;
+
+
+      number.classList.add(
+        "holiday-symbol"
+      );
+
 
       number.title =
-        HOLIDAYS[key];
-
-      cell.title =
-        HOLIDAYS[key];
+        holiday.name;
 
     } else {
 
@@ -339,16 +423,6 @@ function createMonth(year, month) {
     // ========================================================
     // FOLGA
     // ========================================================
-    //
-    // Um feriado pode continuar a ser uma folga.
-    //
-    // Ex:
-    // 05/10 -> F + FOLGA
-    // 01/12 -> F + FOLGA
-    // 08/12 -> F + FOLGA
-    //
-    // Se estiver de férias, FÉRIAS tem prioridade.
-    // ========================================================
 
     if (
       isDayOff &&
@@ -363,22 +437,20 @@ function createMonth(year, month) {
       const badge =
         document.createElement("small");
 
+
       badge.textContent =
         "FOLGA";
 
-      cell.appendChild(badge);
+
+      cell.appendChild(
+        badge
+      );
 
     }
 
 
     // ========================================================
     // FÉRIAS
-    // ========================================================
-    //
-    // Férias têm prioridade visual sobre folga.
-    //
-    // Ex:
-    // 25/12 -> F + FÉRIAS
     // ========================================================
 
     if (isVacation) {
@@ -388,19 +460,13 @@ function createMonth(year, month) {
       );
 
 
-      // Remover eventualmente FOLGA
+      const existingBadges =
+        cell.querySelectorAll("small");
 
-      const oldBadge =
-        cell.querySelector("small");
 
-      if (
-        oldBadge &&
-        oldBadge.textContent === "FOLGA"
-      ) {
-
-        oldBadge.remove();
-
-      }
+      existingBadges.forEach(
+        badge => badge.remove()
+      );
 
 
       cell.classList.add(
@@ -411,16 +477,20 @@ function createMonth(year, month) {
       const badge =
         document.createElement("small");
 
+
       badge.textContent =
         "FÉRIAS";
 
-      cell.appendChild(badge);
+
+      cell.appendChild(
+        badge
+      );
 
     }
 
 
     // ========================================================
-    // DIAS QUE JÁ PASSARAM
+    // DIA PASSADO
     // ========================================================
 
     if (
@@ -435,13 +505,18 @@ function createMonth(year, month) {
       const cross =
         document.createElement("span");
 
+
       cross.className =
         "day-cross";
+
 
       cross.textContent =
         "×";
 
-      cell.appendChild(cross);
+
+      cell.appendChild(
+        cross
+      );
 
     }
 
@@ -463,7 +538,7 @@ function createMonth(year, month) {
 
 
     // ========================================================
-    // DEMISSÃO
+    // CARTA DE DEMISSÃO
     // ========================================================
 
     if (isResignation) {
@@ -473,27 +548,32 @@ function createMonth(year, month) {
       );
 
 
+      const oldBadges =
+        cell.querySelectorAll("small");
+
+
+      oldBadges.forEach(
+        badge => badge.remove()
+      );
+
+
       const badge =
         document.createElement("small");
+
 
       badge.textContent =
         "CARTA";
 
-      cell.appendChild(badge);
+
+      cell.appendChild(
+        badge
+      );
 
     }
 
 
     // ========================================================
     // LAST DAY
-    // ========================================================
-    //
-    // Tem prioridade sobre qualquer outra etiqueta.
-    //
-    // 28/03/2027:
-    //
-    // número = F
-    // destaque = LAST
     // ========================================================
 
     if (isLastDay) {
@@ -503,13 +583,11 @@ function createMonth(year, month) {
       );
 
 
-      // Remover outras etiquetas pequenas,
-      // mas manter o F como número do dia.
-
-      const badges =
+      const oldBadges =
         cell.querySelectorAll("small");
 
-      badges.forEach(
+
+      oldBadges.forEach(
         badge => badge.remove()
       );
 
@@ -517,20 +595,28 @@ function createMonth(year, month) {
       const badge =
         document.createElement("small");
 
+
       badge.textContent =
         "LAST";
 
-      cell.appendChild(badge);
+
+      cell.appendChild(
+        badge
+      );
 
     }
 
 
-    daysGrid.appendChild(cell);
+    daysGrid.appendChild(
+      cell
+    );
 
   }
 
 
-  wrapper.appendChild(daysGrid);
+  wrapper.appendChild(
+    daysGrid
+  );
 
 
   return wrapper;
@@ -539,7 +625,7 @@ function createMonth(year, month) {
 
 
 // ============================================================
-// DESENHAR O CALENDÁRIO
+// DESENHAR CALENDÁRIO
 // ============================================================
 
 function renderCalendar() {
@@ -581,10 +667,6 @@ function renderCalendar() {
 
   }
 
-
-  // ----------------------------------------------------------
-  // DATA ATUAL NO RODAPÉ
-  // ----------------------------------------------------------
 
   document
     .getElementById(
