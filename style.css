@@ -1,772 +1,126 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
-
-:root {
-  --bg: #07101c;
-  --panel: rgba(14, 25, 43, 0.82);
-  --panel-strong: #0f1b2e;
-  --line: rgba(255,255,255,0.09);
-  --text: #f4f7fb;
-  --muted: #8fa1b8;
-  --accent: #63e6be;
-  --accent-2: #74c0fc;
-  --success: #69db7c;
-  --shadow: 0 24px 70px rgba(0,0,0,0.34);
-}
-
-* {
-  box-sizing: border-box;
-}
-
-html {
-  color-scheme: dark;
-}
-
-body {
-  margin: 0;
-  min-height: 100vh;
-  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  color: var(--text);
-  background:
-    radial-gradient(circle at top left, rgba(99,230,190,0.08), transparent 30%),
-    radial-gradient(circle at top right, rgba(116,192,252,0.08), transparent 28%),
-    linear-gradient(180deg, #07101c 0%, #0a1220 55%, #07101c 100%);
-}
-
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background-image:
-    linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
-  background-size: 32px 32px;
-  mask-image: linear-gradient(to bottom, rgba(0,0,0,0.75), transparent 85%);
-}
-
-.page-shell {
-  width: min(1180px, calc(100% - 32px));
-  margin: 0 auto;
-  padding: 72px 0 34px;
-}
-
-.hero {
-  text-align: center;
-  margin-bottom: 42px;
-}
-
-.eyebrow {
-  margin: 0 0 10px;
-  font-size: 0.76rem;
-  letter-spacing: 0.2em;
-  font-weight: 800;
-  color: var(--accent);
-}
-
-.hero h1,
-.stats-heading h2,
-.countdown-card h2 {
-  font-family: "Space Grotesk", Inter, sans-serif;
-}
-
-.hero h1 {
-  margin: 0;
-  font-size: clamp(2.4rem, 6vw, 5.4rem);
-  line-height: 0.95;
-  letter-spacing: -0.05em;
-}
-
-.subtitle {
-  margin: 16px 0 0;
-  color: var(--muted);
-  font-size: clamp(1rem, 2vw, 1.12rem);
-}
-
-.countdown-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 22px;
-}
-
-.countdown-card,
-.stats-panel {
-  position: relative;
-  overflow: hidden;
-  border: 1px solid var(--line);
-  background: linear-gradient(180deg, rgba(18,31,52,0.94), rgba(10,19,32,0.92));
-  box-shadow: var(--shadow);
-  backdrop-filter: blur(16px);
-}
-
-.countdown-card {
-  border-radius: 28px;
-  padding: 30px;
-}
-
-.countdown-card::after {
-  content: "";
-  position: absolute;
-  width: 220px;
-  height: 220px;
-  border-radius: 999px;
-  right: -90px;
-  top: -90px;
-  background: rgba(116,192,252,0.08);
-  filter: blur(6px);
-  pointer-events: none;
-}
-
-.countdown-card--primary::after {
-  background: rgba(99,230,190,0.09);
-}
-
-.card-topline,
-.progress-meta,
-.stats-heading,
-footer {
-  display: flex;
-  align-items: center;
-}
-
-.card-topline {
-  gap: 10px;
-  color: var(--muted);
-  font-size: 0.75rem;
-  letter-spacing: 0.16em;
-  font-weight: 700;
-}
-
-.status-dot {
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: var(--accent);
-  box-shadow: 0 0 18px rgba(99,230,190,0.8);
-}
-
-.status-dot--alt {
-  background: var(--accent-2);
-  box-shadow: 0 0 18px rgba(116,192,252,0.8);
-}
-
-.countdown-card h2 {
-  margin: 30px 0 4px;
-  font-size: clamp(2rem, 4vw, 3.1rem);
-  letter-spacing: -0.045em;
-}
-
-.target-date {
-  margin: 0;
-  color: var(--muted);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-size: 0.78rem;
-  font-weight: 700;
-}
-
-.countdown {
-  display: grid;
-  grid-template-columns: 1.25fr repeat(3, 1fr);
-  gap: 9px;
-  margin: 34px 0 28px;
-}
-
-.time-box {
-  min-width: 0;
-  padding: 18px 8px 14px;
-  text-align: center;
-  border: 1px solid var(--line);
-  border-radius: 17px;
-  background: rgba(255,255,255,0.025);
-}
-
-.time-value {
-  display: block;
-  font-family: "Space Grotesk", monospace;
-  font-size: clamp(1.65rem, 4vw, 2.7rem);
-  font-weight: 700;
-  line-height: 1;
-  letter-spacing: -0.04em;
-}
-
-.time-label {
-  display: block;
-  margin-top: 9px;
-  color: var(--muted);
-  font-size: 0.68rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-
-.progress-wrap {
-  margin-top: 8px;
-}
-
-.progress-meta {
-  justify-content: space-between;
-  color: var(--muted);
-  font-size: 0.78rem;
-}
-
-.progress-meta strong {
-  color: var(--text);
-}
-
-.progress-track {
-  height: 8px;
-  margin-top: 9px;
-  overflow: hidden;
-  border-radius: 99px;
-  background: rgba(255,255,255,0.06);
-}
-
-.progress-bar {
-  width: 0%;
-  height: 100%;
-  border-radius: inherit;
-  background: linear-gradient(90deg, rgba(99,230,190,0.45), var(--accent));
-  box-shadow: 0 0 18px rgba(99,230,190,0.25);
-  transition: width 0.8s ease;
-}
-
-.progress-bar--alt {
-  background: linear-gradient(90deg, rgba(116,192,252,0.42), var(--accent-2));
-  box-shadow: 0 0 18px rgba(116,192,252,0.22);
-}
-
-.milestone-message {
-  margin: 18px 0 0;
-  color: var(--muted);
-  font-size: 0.9rem;
-}
-
-.stats-panel {
-  margin-top: 22px;
-  border-radius: 28px;
-  padding: 30px;
-}
-
-.stats-heading {
-  justify-content: space-between;
-  gap: 20px;
-  margin-bottom: 22px;
-}
-
-.stats-heading h2 {
-  margin: 0;
-  font-size: 1.8rem;
-  letter-spacing: -0.04em;
-}
-
-.stats-note,
-.work-note {
-  color: var(--muted);
-}
-
-.stats-note {
-  margin: 0;
-  font-size: 0.82rem;
-}
-
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
-}
-
-.stat-card {
-  min-height: 124px;
-  padding: 18px;
-  border-radius: 18px;
-  border: 1px solid var(--line);
-  background: rgba(255,255,255,0.025);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.stat-label {
-  color: var(--muted);
-  font-size: 0.78rem;
-  line-height: 1.4;
-}
-
-.stat-value {
-  font-family: "Space Grotesk", Inter, sans-serif;
-  font-size: 2rem;
-  letter-spacing: -0.04em;
-}
-
-.work-note {
-  margin: 18px 0 0;
-  font-size: 0.76rem;
-  line-height: 1.6;
-}
-
-code {
-  padding: 2px 6px;
-  border-radius: 6px;
-  background: rgba(255,255,255,0.06);
-}
-
-footer {
-  justify-content: center;
-  gap: 10px;
-  padding: 26px 8px 0;
-  color: var(--muted);
-  font-size: 0.76rem;
-}
-
-.footer-separator {
-  opacity: 0.45;
-}
-
-.finished .time-box {
-  border-color: rgba(105,219,124,0.2);
-}
-
-.finished .time-value {
-  color: var(--success);
-}
-
-@media (max-width: 860px) {
-  .countdown-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .stats-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 520px) {
-  .page-shell {
-    width: min(100% - 20px, 1180px);
-    padding-top: 42px;
-  }
-
-  .hero {
-    margin-bottom: 28px;
-  }
-
-  .countdown-card,
-  .stats-panel {
-    border-radius: 22px;
-    padding: 20px;
-  }
-
-  .countdown {
-    gap: 6px;
-  }
-
-  .time-box {
-    padding: 15px 4px 12px;
-    border-radius: 13px;
-  }
-
-  .time-value {
-    font-size: clamp(1.25rem, 8vw, 2.1rem);
-  }
-
-  .time-label {
-    font-size: 0.58rem;
-  }
-
-  .stats-heading {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
-  .stats-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .stat-card {
-    min-height: 112px;
-  }
-}
 /* ============================================================
-   CALENDÁRIO + NAVEGAÇÃO
+   NAVEGAÇÃO
    ============================================================ */
 
-/* Navegação superior */
 .top-nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   padding: 12px 0 34px;
 }
 
+
 .nav-brand {
   color: var(--text);
+
   text-decoration: none;
+
   font-weight: 800;
+
   letter-spacing: 0.14em;
+
   font-size: 0.78rem;
 }
+
 
 .nav-links {
   display: flex;
+
   gap: 8px;
+
   padding: 5px;
+
   border: 1px solid var(--line);
+
   border-radius: 14px;
-  background: rgba(255, 255, 255, 0.025);
+
+  background:
+    rgba(255, 255, 255, 0.025);
 }
+
 
 .nav-link {
   color: var(--muted);
+
   text-decoration: none;
+
   padding: 9px 13px;
+
   border-radius: 10px;
+
   font-size: 0.82rem;
+
   font-weight: 700;
 }
+
 
 .nav-link.active,
 .nav-link:hover {
+
   color: var(--text);
-  background: rgba(255, 255, 255, 0.07);
-}
 
-
-/* ============================================================
-   LEGENDA DO CALENDÁRIO
-   ============================================================ */
-
-.calendar-legend {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 18px;
-  margin-bottom: 24px;
-  color: var(--muted);
-  font-size: 0.78rem;
-}
-
-.calendar-legend span {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-}
-
-.legend-dot {
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  display: inline-block;
-}
-
-.legend-past {
-  background: #4b5563;
-}
-
-.legend-today {
-  background: var(--accent);
-}
-
-.legend-resignation {
-  background: var(--accent-2);
-}
-
-.legend-last {
-  background: #ff8787;
-}
-
-
-/* ============================================================
-   GRELHA DOS MESES
-   ============================================================ */
-
-.calendar-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 20px;
-}
-
-
-/* ============================================================
-   CARTÃO DE CADA MÊS
-   ============================================================ */
-
-.month-card {
-  border: 1px solid var(--line);
-
-  background: linear-gradient(
-    180deg,
-    rgba(18, 31, 52, 0.94),
-    rgba(10, 19, 32, 0.92)
-  );
-
-  box-shadow: var(--shadow);
-
-  border-radius: 24px;
-  padding: 22px;
-}
-
-.month-card h2 {
-  font-family: "Space Grotesk", Inter, sans-serif;
-  margin: 0 0 18px;
-}
-
-
-/* ============================================================
-   DIAS DA SEMANA
-   ============================================================ */
-
-.weekdays,
-.days-grid {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 6px;
-}
-
-.weekdays {
-  margin-bottom: 8px;
-}
-
-.weekdays span {
-  text-align: center;
-  color: var(--muted);
-  font-size: 0.65rem;
-  font-weight: 700;
-}
-
-
-/* ============================================================
-   DIAS DO CALENDÁRIO
-   ============================================================ */
-
-.day-cell {
-  position: relative;
-
-  aspect-ratio: 1 / 1;
-
-  border: 1px solid rgba(255, 255, 255, 0.055);
-  border-radius: 10px;
-
-  background: rgba(255, 255, 255, 0.022);
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.day-cell--blank {
-  visibility: hidden;
-}
-
-.day-number {
-  font-size: 0.78rem;
-  z-index: 2;
-}
-
-
-/* ============================================================
-   DIAS QUE JÁ PASSARAM
-   ============================================================ */
-
-.day-cell--past {
-  color: #64748b;
-  background: rgba(255, 255, 255, 0.012);
-}
-
-.day-cross {
-  position: absolute;
-  inset: 0;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  font-size: 2.15rem;
-
-  color: rgba(255, 255, 255, 0.19);
-
-  transform: rotate(-8deg);
-}
-
-
-/* ============================================================
-   DIA ATUAL
-   ============================================================ */
-
-.day-cell--today {
-  border-color: var(--accent);
-
-  box-shadow:
-    inset 0 0 0 1px var(--accent),
-    0 0 14px rgba(99, 230, 190, 0.12);
-}
-
-
-/* ============================================================
-   DIA DA DEMISSÃO
-   ============================================================ */
-
-.day-cell--resignation {
-  border-color: var(--accent-2);
-  background: rgba(116, 192, 252, 0.12);
-}
-
-
-/* ============================================================
-   ÚLTIMO DIA
-   ============================================================ */
-
-.day-cell--last {
-  border-color: #ff8787;
-  background: rgba(255, 135, 135, 0.11);
-}
-
-
-/* ============================================================
-   PEQUENAS ETIQUETAS "CARTA" E "LAST"
-   ============================================================ */
-
-.day-cell small {
-  position: absolute;
-  bottom: 3px;
-
-  font-size: 0.42rem;
-  font-weight: 800;
-
-  letter-spacing: 0.05em;
-}
-
-.day-cell--resignation small {
-  color: var(--accent-2);
-}
-
-.day-cell--last small {
-  color: #ff8787;
-}
-
-
-/* ============================================================
-   RESPONSIVO
-   ============================================================ */
-
-@media (max-width: 860px) {
-
-  .calendar-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-
-@media (max-width: 520px) {
-
-  .top-nav {
-    align-items: flex-start;
-    gap: 14px;
-  }
-
-  .nav-brand {
-    margin-top: 10px;
-  }
-
-  .month-card {
-    padding: 18px;
-    border-radius: 20px;
-  }
-
-  .day-cell {
-    border-radius: 8px;
-  }
-
-  .day-cross {
-    font-size: 1.6rem;
-  }
-}/* ============================================================
-   TIPOS DE DIA
-   ============================================================ */
-
-
-/* FOLGAS */
-
-.day-cell--dayoff {
-  background: rgba(148, 163, 184, 0.08);
-
-  border-color:
-    rgba(148, 163, 184, 0.18);
-}
-
-
-.day-cell--dayoff small {
-  color: #94a3b8;
-}
-
-
-
-/* FÉRIAS */
-
-.day-cell--vacation {
   background:
-    rgba(250, 176, 5, 0.10);
-
-  border-color:
-    rgba(250, 176, 5, 0.45);
+    rgba(255, 255, 255, 0.07);
 }
-
-
-.day-cell--vacation small {
-  color: #ffd43b;
-}
-
-
-/* Etiquetas */
-
-.day-cell small {
-
-  position: absolute;
-
-  bottom: 4px;
-
-  width: 100%;
-
-  text-align: center;
-
-  font-size: 0.38rem;
-
-  font-weight: 800;
-
-  letter-spacing: 0.05em;
-
-  line-height: 1;
-
-}
-
-
-
-/* Número do dia */
-
-.day-number {
-
-  position: relative;
-
-  z-index: 3;
-
-}
-
-
-
-/* Cruz dos dias passados */
-
-.day-cross {
-
-  z-index: 4;
-
-  pointer-events: none;
-
-}
-
 
 
 /* ============================================================
    LEGENDA
    ============================================================ */
+
+.calendar-legend {
+
+  display: flex;
+
+  flex-wrap: wrap;
+
+  justify-content: center;
+
+  gap: 18px;
+
+  margin-bottom: 24px;
+
+  color: var(--muted);
+
+  font-size: 0.78rem;
+
+}
+
+
+.calendar-legend span {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+}
+
+
+.legend-dot {
+
+  width: 9px;
+
+  height: 9px;
+
+  border-radius: 50%;
+
+  display: inline-block;
+
+}
+
+
+.legend-past {
+  background: #4b5563;
+}
+
+
+.legend-today {
+  background: var(--accent);
+}
+
 
 .legend-dayoff {
   background: #94a3b8;
@@ -777,20 +131,570 @@ footer {
   background: #ffd43b;
 }
 
-.day-number {
-  position: relative;
-  z-index: 3;
+
+.legend-resignation {
+  background: var(--accent-2);
 }
 
-.day-cell .day-number {
-  font-weight: 700;
+
+.legend-last {
+  background: #ff8787;
 }
+
+
+.legend-holiday-symbol {
+
+  color: #ff8787;
+
+  font-weight: 800;
+
+}
+
 
 /* ============================================================
-   LETRA F DOS FERIADOS
+   GRELHA DOS MESES
    ============================================================ */
 
-.day-cell .day-number[title] {
-  color: #ff8787;
-  font-weight: 800;
+.calendar-grid {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(0, 1fr)
+    );
+
+  gap: 20px;
+
+}
+
+
+/* ============================================================
+   CARTÃO DE CADA MÊS
+   ============================================================ */
+
+.month-card {
+
+  border:
+    1px solid
+    var(--line);
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(18, 31, 52, 0.94),
+      rgba(10, 19, 32, 0.92)
+    );
+
+  box-shadow:
+    var(--shadow);
+
+  border-radius:
+    24px;
+
+  padding:
+    22px;
+
+}
+
+
+.month-card h2 {
+
+  font-family:
+    "Space Grotesk",
+    Inter,
+    sans-serif;
+
+  margin:
+    0 0 18px;
+
+}
+
+
+/* ============================================================
+   DIAS DA SEMANA
+   ============================================================ */
+
+.weekdays,
+.days-grid {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(7, 1fr);
+
+  gap: 6px;
+
+}
+
+
+.weekdays {
+
+  margin-bottom:
+    8px;
+
+}
+
+
+.weekdays span {
+
+  text-align:
+    center;
+
+  color:
+    var(--muted);
+
+  font-size:
+    0.65rem;
+
+  font-weight:
+    700;
+
+}
+
+
+/* ============================================================
+   CÉLULA DE CADA DIA
+   ============================================================ */
+
+.day-cell {
+
+  position:
+    relative;
+
+  aspect-ratio:
+    1 / 1;
+
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.055
+    );
+
+  border-radius:
+    10px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.022
+    );
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+}
+
+
+.day-cell--blank {
+
+  visibility:
+    hidden;
+
+}
+
+
+/* ============================================================
+   NÚMERO DO DIA
+   ============================================================ */
+
+.day-number {
+
+  position:
+    relative;
+
+  z-index:
+    3;
+
+  font-size:
+    0.78rem;
+
+  font-weight:
+    700;
+
+}
+
+
+/* ============================================================
+   FERIADOS
+   ============================================================ */
+
+.holiday-symbol {
+
+  color:
+    #ff8787 !important;
+
+  font-weight:
+    800;
+
+}
+
+
+.holiday-name {
+
+  position:
+    absolute;
+
+  top:
+    4px;
+
+  left:
+    3px;
+
+  right:
+    3px;
+
+  text-align:
+    center;
+
+  font-size:
+    0.42rem;
+
+  font-weight:
+    700;
+
+  color:
+    #ff8787;
+
+  line-height:
+    1.05;
+
+  white-space:
+    nowrap;
+
+  overflow:
+    hidden;
+
+  text-overflow:
+    ellipsis;
+
+  z-index:
+    3;
+
+}
+
+
+/* ============================================================
+   FOLGAS
+   ============================================================ */
+
+.day-cell--dayoff {
+
+  background:
+    rgba(
+      148,
+      163,
+      184,
+      0.08
+    );
+
+  border-color:
+    rgba(
+      148,
+      163,
+      184,
+      0.18
+    );
+
+}
+
+
+.day-cell--dayoff small {
+
+  color:
+    #94a3b8;
+
+}
+
+
+/* ============================================================
+   FÉRIAS
+   ============================================================ */
+
+.day-cell--vacation {
+
+  background:
+    rgba(
+      250,
+      176,
+      5,
+      0.10
+    );
+
+  border-color:
+    rgba(
+      250,
+      176,
+      5,
+      0.45
+    );
+
+}
+
+
+.day-cell--vacation small {
+
+  color:
+    #ffd43b;
+
+}
+
+
+/* ============================================================
+   DIA ATUAL
+   ============================================================ */
+
+.day-cell--today {
+
+  border-color:
+    var(--accent);
+
+  box-shadow:
+    inset
+    0 0 0 1px
+    var(--accent),
+
+    0 0 14px
+    rgba(
+      99,
+      230,
+      190,
+      0.12
+    );
+
+}
+
+
+/* ============================================================
+   DIA DA CARTA
+   ============================================================ */
+
+.day-cell--resignation {
+
+  border-color:
+    var(--accent-2);
+
+  background:
+    rgba(
+      116,
+      192,
+      252,
+      0.12
+    );
+
+}
+
+
+.day-cell--resignation small {
+
+  color:
+    var(--accent-2);
+
+}
+
+
+/* ============================================================
+   LAST DAY
+   ============================================================ */
+
+.day-cell--last {
+
+  border-color:
+    #ff8787;
+
+  background:
+    rgba(
+      255,
+      135,
+      135,
+      0.11
+    );
+
+}
+
+
+.day-cell--last small {
+
+  color:
+    #ff8787;
+
+}
+
+
+/* ============================================================
+   ETIQUETAS
+   ============================================================ */
+
+.day-cell small {
+
+  position:
+    absolute;
+
+  bottom:
+    4px;
+
+  left:
+    2px;
+
+  right:
+    2px;
+
+  text-align:
+    center;
+
+  font-size:
+    0.38rem;
+
+  font-weight:
+    800;
+
+  letter-spacing:
+    0.05em;
+
+  line-height:
+    1;
+
+  z-index:
+    3;
+
+}
+
+
+/* ============================================================
+   DIAS JÁ PASSADOS
+   ============================================================ */
+
+.day-cell--past {
+
+  color:
+    #64748b;
+
+}
+
+
+.day-cross {
+
+  position:
+    absolute;
+
+  inset:
+    0;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  font-size:
+    2.15rem;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.19
+    );
+
+  transform:
+    rotate(-8deg);
+
+  z-index:
+    4;
+
+  pointer-events:
+    none;
+
+}
+
+
+/* ============================================================
+   RESPONSIVO
+   ============================================================ */
+
+@media
+(max-width: 860px) {
+
+  .calendar-grid {
+
+    grid-template-columns:
+      1fr;
+
+  }
+
+}
+
+
+@media
+(max-width: 520px) {
+
+  .top-nav {
+
+    align-items:
+      flex-start;
+
+    gap:
+      14px;
+
+  }
+
+
+  .nav-brand {
+
+    margin-top:
+      10px;
+
+  }
+
+
+  .month-card {
+
+    padding:
+      18px;
+
+    border-radius:
+      20px;
+
+  }
+
+
+  .day-cell {
+
+    border-radius:
+      8px;
+
+  }
+
+
+  .day-cross {
+
+    font-size:
+      1.6rem;
+
+  }
+
+
+  .holiday-name {
+
+    font-size:
+      0.36rem;
+
+  }
+
 }
