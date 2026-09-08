@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
+@import url(
+  'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap'
+);
 
 
 /* ============================================================
@@ -7,13 +9,24 @@
 
 :root {
 
-  --bg: #07101c;
+  --bg:
+    #07101c;
 
   --panel:
-    rgba(14, 25, 43, 0.82);
+    rgba(
+      14,
+      25,
+      43,
+      0.82
+    );
 
   --line:
-    rgba(255, 255, 255, 0.09);
+    rgba(
+      255,
+      255,
+      255,
+      0.09
+    );
 
   --text:
     #f4f7fb;
@@ -32,7 +45,12 @@
 
   --shadow:
     0 24px 70px
-    rgba(0, 0, 0, 0.34);
+    rgba(
+      0,
+      0,
+      0,
+      0.34
+    );
 
 }
 
@@ -42,24 +60,35 @@
    ============================================================ */
 
 * {
-  box-sizing: border-box;
+
+  box-sizing:
+    border-box;
+
 }
 
 
 html {
-  color-scheme: dark;
+
+  color-scheme:
+    dark;
+
 }
 
 
 body {
 
-  margin: 0;
+  margin:
+    0;
 
-  min-height: 100vh;
+  min-height:
+    100vh;
 
   font-family:
+
     Inter,
+
     system-ui,
+
     sans-serif;
 
   color:
@@ -68,22 +97,45 @@ body {
   background:
 
     radial-gradient(
+
       circle at top left,
-      rgba(99, 230, 190, 0.08),
+
+      rgba(
+        99,
+        230,
+        190,
+        0.08
+      ),
+
       transparent 30%
+
     ),
 
     radial-gradient(
+
       circle at top right,
-      rgba(116, 192, 252, 0.08),
+
+      rgba(
+        116,
+        192,
+        252,
+        0.08
+      ),
+
       transparent 28%
+
     ),
 
     linear-gradient(
+
       180deg,
+
       #07101c 0%,
+
       #0a1220 55%,
+
       #07101c 100%
+
     );
 
 }
@@ -91,28 +143,52 @@ body {
 
 body::before {
 
-  content: "";
+  content:
+    "";
 
-  position: fixed;
+  position:
+    fixed;
 
-  inset: 0;
+  inset:
+    0;
 
-  pointer-events: none;
+  pointer-events:
+    none;
 
   background-image:
 
     linear-gradient(
-      rgba(255,255,255,0.018) 1px,
+
+      rgba(
+        255,
+        255,
+        255,
+        0.018
+      )
+      1px,
+
       transparent 1px
+
     ),
 
     linear-gradient(
+
       90deg,
-      rgba(255,255,255,0.018) 1px,
+
+      rgba(
+        255,
+        255,
+        255,
+        0.018
+      )
+      1px,
+
       transparent 1px
+
     );
 
   background-size:
+
     32px 32px;
 
 }
@@ -121,9 +197,15 @@ body::before {
 .page-shell {
 
   width:
+
     min(
+
       1180px,
-      calc(100% - 32px)
+
+      calc(
+        100% - 32px
+      )
+
     );
 
   margin:
@@ -188,13 +270,16 @@ body::before {
     5px;
 
   border:
+
     1px solid
+
     var(--line);
 
   border-radius:
     14px;
 
   background:
+
     rgba(
       255,
       255,
@@ -235,6 +320,7 @@ body::before {
     var(--text);
 
   background:
+
     rgba(
       255,
       255,
@@ -286,8 +372,11 @@ body::before {
 .month-card h2 {
 
   font-family:
+
     "Space Grotesk",
+
     Inter,
+
     sans-serif;
 
 }
@@ -299,10 +388,15 @@ body::before {
     0;
 
   font-size:
+
     clamp(
+
       2.4rem,
+
       6vw,
+
       5.4rem
+
     );
 
   line-height:
@@ -335,9 +429,16 @@ body::before {
     grid;
 
   grid-template-columns:
+
     repeat(
+
       2,
-      minmax(0, 1fr)
+
+      minmax(
+        0,
+        1fr
+      )
+
     );
 
   gap:
@@ -351,15 +452,31 @@ body::before {
 .month-card {
 
   border:
+
     1px solid
+
     var(--line);
 
   background:
 
     linear-gradient(
+
       180deg,
-      rgba(18, 31, 52, 0.94),
-      rgba(10, 19, 32, 0.92)
+
+      rgba(
+        18,
+        31,
+        52,
+        0.94
+      ),
+
+      rgba(
+        10,
+        19,
+        32,
+        0.92
+      )
+
     );
 
   box-shadow:
@@ -436,10 +553,15 @@ body::before {
     30px 0 4px;
 
   font-size:
+
     clamp(
+
       2rem,
+
       4vw,
+
       3.1rem
+
     );
 
   letter-spacing:
@@ -472,7 +594,7 @@ body::before {
 
 
 /* ============================================================
-   TEMPO
+   CONTADORES
    ============================================================ */
 
 .countdown {
@@ -481,8 +603,13 @@ body::before {
     grid;
 
   grid-template-columns:
+
     1.25fr
-    repeat(3, 1fr);
+
+    repeat(
+      3,
+      1fr
+    );
 
   gap:
     9px;
@@ -502,13 +629,16 @@ body::before {
     center;
 
   border:
+
     1px solid
+
     var(--line);
 
   border-radius:
     17px;
 
   background:
+
     rgba(
       255,
       255,
@@ -525,14 +655,21 @@ body::before {
     block;
 
   font-family:
+
     "Space Grotesk",
+
     monospace;
 
   font-size:
+
     clamp(
+
       1.65rem,
+
       4vw,
+
       2.7rem
+
     );
 
   font-weight:
@@ -568,7 +705,7 @@ body::before {
 
 
 /* ============================================================
-   BARRA DE PROGRESSO
+   PROGRESSO
    ============================================================ */
 
 .progress-meta {
@@ -606,6 +743,7 @@ body::before {
     99px;
 
   background:
+
     rgba(
       255,
       255,
@@ -630,9 +768,18 @@ body::before {
   background:
 
     linear-gradient(
+
       90deg,
-      rgba(99, 230, 190, 0.45),
+
+      rgba(
+        99,
+        230,
+        190,
+        0.45
+      ),
+
       var(--accent)
+
     );
 
 }
@@ -643,9 +790,18 @@ body::before {
   background:
 
     linear-gradient(
+
       90deg,
-      rgba(116, 192, 252, 0.42),
+
+      rgba(
+        116,
+        192,
+        252,
+        0.42
+      ),
+
       var(--accent-2)
+
     );
 
 }
@@ -716,7 +872,11 @@ body::before {
     grid;
 
   grid-template-columns:
-    repeat(4, 1fr);
+
+    repeat(
+      4,
+      1fr
+    );
 
   gap:
     12px;
@@ -739,10 +899,13 @@ body::before {
     18px;
 
   border:
+
     1px solid
+
     var(--line);
 
   background:
+
     rgba(
       255,
       255,
@@ -776,7 +939,9 @@ body::before {
 .stat-value {
 
   font-family:
+
     "Space Grotesk",
+
     sans-serif;
 
   font-size:
@@ -800,7 +965,7 @@ body::before {
 
 
 /* ============================================================
-   CALENDÁRIO — HERO
+   CALENDÁRIO
    ============================================================ */
 
 .calendar-hero {
@@ -873,32 +1038,50 @@ body::before {
 
 
 .legend-past {
-  background: #4b5563;
+
+  background:
+    #4b5563;
+
 }
 
 
 .legend-today {
-  background: var(--accent);
+
+  background:
+    var(--accent);
+
 }
 
 
 .legend-dayoff {
-  background: #94a3b8;
+
+  background:
+    #94a3b8;
+
 }
 
 
 .legend-vacation {
-  background: #ffd43b;
+
+  background:
+    #ffd43b;
+
 }
 
 
 .legend-resignation {
-  background: var(--accent-2);
+
+  background:
+    var(--accent-2);
+
 }
 
 
 .legend-last {
-  background: #ff8787;
+
+  background:
+    #ff8787;
+
 }
 
 
@@ -923,9 +1106,16 @@ body::before {
     grid;
 
   grid-template-columns:
+
     repeat(
+
       2,
-      minmax(0, 1fr)
+
+      minmax(
+        0,
+        1fr
+      )
+
     );
 
   gap:
@@ -971,7 +1161,11 @@ body::before {
     grid;
 
   grid-template-columns:
-    repeat(7, 1fr);
+
+    repeat(
+      7,
+      1fr
+    );
 
   gap:
     6px;
@@ -1008,7 +1202,7 @@ body::before {
 
 
 /* ============================================================
-   CÉLULAS DO CALENDÁRIO
+   CÉLULAS
    ============================================================ */
 
 .day-cell {
@@ -1020,7 +1214,9 @@ body::before {
     1 / 1;
 
   border:
+
     1px solid
+
     rgba(
       255,
       255,
@@ -1032,6 +1228,7 @@ body::before {
     10px;
 
   background:
+
     rgba(
       255,
       255,
@@ -1063,7 +1260,7 @@ body::before {
 
 
 /* ============================================================
-   NÚMERO / SÍMBOLO DO DIA
+   NÚMERO DO DIA
    ============================================================ */
 
 .day-number {
@@ -1083,6 +1280,10 @@ body::before {
 }
 
 
+/* ============================================================
+   FERIADOS
+   ============================================================ */
+
 .holiday-symbol {
 
   color:
@@ -1093,10 +1294,6 @@ body::before {
 
 }
 
-
-/* ============================================================
-   NOME DO FERIADO
-   ============================================================ */
 
 .holiday-name {
 
@@ -1149,6 +1346,7 @@ body::before {
 .day-cell--dayoff {
 
   background:
+
     rgba(
       148,
       163,
@@ -1157,6 +1355,7 @@ body::before {
     );
 
   border-color:
+
     rgba(
       148,
       163,
@@ -1182,6 +1381,7 @@ body::before {
 .day-cell--vacation {
 
   background:
+
     rgba(
       250,
       176,
@@ -1190,6 +1390,7 @@ body::before {
     );
 
   border-color:
+
     rgba(
       250,
       176,
@@ -1224,6 +1425,7 @@ body::before {
     var(--accent),
 
     0 0 14px
+
     rgba(
       99,
       230,
@@ -1244,6 +1446,7 @@ body::before {
     var(--accent-2);
 
   background:
+
     rgba(
       116,
       192,
@@ -1272,6 +1475,7 @@ body::before {
     #ff8787;
 
   background:
+
     rgba(
       255,
       135,
@@ -1339,6 +1543,7 @@ body::before {
     #64748b;
 
   background:
+
     rgba(
       255,
       255,
@@ -1373,6 +1578,7 @@ body::before {
     1;
 
   color:
+
     rgba(
       255,
       255,
@@ -1426,10 +1632,11 @@ footer {
 
 
 /* ============================================================
-   RESPONSIVE — TABLET
+   TABLET
    ============================================================ */
 
-@media (max-width: 860px) {
+@media
+(max-width: 860px) {
 
   .countdown-grid,
   .calendar-grid {
@@ -1443,7 +1650,11 @@ footer {
   .stats-grid {
 
     grid-template-columns:
-      repeat(2, 1fr);
+
+      repeat(
+        2,
+        1fr
+      );
 
   }
 
@@ -1451,17 +1662,24 @@ footer {
 
 
 /* ============================================================
-   RESPONSIVE — TELEMÓVEL
+   TELEMÓVEL
    ============================================================ */
 
-@media (max-width: 520px) {
+@media
+(max-width: 520px) {
 
   .page-shell {
 
     width:
+
       min(
-        calc(100% - 20px),
+
+        calc(
+          100% - 20px
+        ),
+
         1180px
+
       );
 
   }
