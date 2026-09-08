@@ -2,18 +2,44 @@
 // CONFIGURAÇÃO DO CALENDÁRIO
 // ============================================================
 
-const CALENDAR_START = new Date(2026, 7, 1);  // Agosto 2026
-const CALENDAR_END = new Date(2027, 2, 31);   // Março 2027
+// Mantemos agosto de 2026 para mostrar
+// todo o Project Freedom desde o início.
 
-const RESIGNATION_KEY = "2027-01-28";
-const LAST_DAY_KEY = "2027-03-28";
+const CALENDAR_START =
+  new Date(
+    2026,
+    7,
+    1
+  );
+
+
+// Termina em janeiro de 2027,
+// mês do último dia.
+
+const CALENDAR_END =
+  new Date(
+    2027,
+    0,
+    31
+  );
+
+
+// Carta
+
+const RESIGNATION_KEY =
+  "2026-11-27";
+
+
+// Último dia
+
+const LAST_DAY_KEY =
+  "2027-01-26";
 
 
 // ============================================================
 // FOLGAS FIXAS
 // ============================================================
 
-// JavaScript:
 // Domingo = 0
 // Segunda = 1
 // Terça   = 2
@@ -22,113 +48,192 @@ const LAST_DAY_KEY = "2027-03-28";
 // Sexta   = 5
 // Sábado  = 6
 
-const WEEKLY_DAYS_OFF = [1, 2];
+const WEEKLY_DAYS_OFF = [
+  1,
+  2
+];
 
 
 // ============================================================
-// FÉRIAS
+// PERÍODO VISUAL DE FÉRIAS
+// ============================================================
+//
+// Aqui incluímos 25 de dezembro para que visualmente
+// apareça amarelo no meio do período de férias.
+//
+// No cálculo dos turnos do script.js, o dia 25
+// continua separado como feriado.
+//
 // ============================================================
 
-const VACATION_DAYS = [
+const VACATION_DISPLAY_DAYS = [
+
   "2026-12-23",
+
   "2026-12-24",
+
   "2026-12-25",
+
   "2026-12-26",
+
   "2026-12-27"
+
 ];
 
 
 // ============================================================
 // FERIADOS
 // ============================================================
+//
+// symbol:
+// F = feriado
+// N = Natal
+// P = Páscoa
+//
+// ============================================================
 
 const HOLIDAYS = {
 
+
   "2026-10-05": {
-    name: "Implantação da República",
-    short: "República",
-    symbol: "F"
+
+    name:
+      "Implantação da República",
+
+    short:
+      "República",
+
+    symbol:
+      "F"
+
   },
+
 
   "2026-11-01": {
-    name: "Dia de Todos os Santos",
-    short: "Todos Santos",
-    symbol: "F"
+
+    name:
+      "Dia de Todos os Santos",
+
+    short:
+      "Todos Santos",
+
+    symbol:
+      "F"
+
   },
+
 
   "2026-12-01": {
-    name: "Restauração da Independência",
-    short: "Restauração",
-    symbol: "F"
+
+    name:
+      "Restauração da Independência",
+
+    short:
+      "Restauração",
+
+    symbol:
+      "F"
+
   },
+
 
   "2026-12-08": {
-    name: "Imaculada Conceição",
-    short: "Imaculada",
-    symbol: "F"
+
+    name:
+      "Imaculada Conceição",
+
+    short:
+      "Imaculada",
+
+    symbol:
+      "F"
+
   },
+
 
   "2026-12-25": {
-    name: "Natal",
-    short: "Natal",
-    symbol: "N"
+
+    name:
+      "Natal",
+
+    short:
+      "Natal",
+
+    symbol:
+      "N"
+
   },
+
 
   "2027-01-01": {
-    name: "Ano Novo",
-    short: "Ano Novo",
-    symbol: "F"
-  },
 
-  "2027-03-26": {
-    name: "Sexta-Feira Santa",
-    short: "Sexta Sta.",
-    symbol: "F"
-  },
+    name:
+      "Ano Novo",
 
-  "2027-03-28": {
-    name: "Páscoa",
-    short: "Páscoa",
-    symbol: "P"
-  },
+    short:
+      "Ano Novo",
 
-  "2027-05-06": {
-    name: "Feriado Municipal de Loulé",
-    short: "Loulé",
-    symbol: "F"
+    symbol:
+      "F"
+
   }
 
 };
 
 
 // ============================================================
-// NOMES DOS MESES E DIAS
+// NOMES DOS MESES
 // ============================================================
 
 const monthNames = [
+
   "Janeiro",
+
   "Fevereiro",
+
   "Março",
+
   "Abril",
+
   "Maio",
+
   "Junho",
+
   "Julho",
+
   "Agosto",
+
   "Setembro",
+
   "Outubro",
+
   "Novembro",
+
   "Dezembro"
+
 ];
 
 
+// ============================================================
+// DIAS DA SEMANA
+// ============================================================
+
 const weekdayNames = [
+
   "Seg",
+
   "Ter",
+
   "Qua",
+
   "Qui",
+
   "Sex",
+
   "Sáb",
+
   "Dom"
+
 ];
 
 
@@ -137,29 +242,53 @@ const weekdayNames = [
 // ============================================================
 
 function pad(number) {
-  return String(number).padStart(2, "0");
+
+  return String(number)
+    .padStart(
+      2,
+      "0"
+    );
+
 }
 
+
+// ------------------------------------------------------------
 
 function dateKey(date) {
 
   return (
+
     date.getFullYear() +
+
     "-" +
-    pad(date.getMonth() + 1) +
+
+    pad(
+      date.getMonth() + 1
+    ) +
+
     "-" +
-    pad(date.getDate())
+
+    pad(
+      date.getDate()
+    )
+
   );
 
 }
 
 
+// ------------------------------------------------------------
+
 function startOfDay(date) {
 
   return new Date(
+
     date.getFullYear(),
+
     date.getMonth(),
+
     date.getDate()
+
   );
 
 }
@@ -169,26 +298,41 @@ function startOfDay(date) {
 // CRIAR UM MÊS
 // ============================================================
 
-function createMonth(year, month) {
+function createMonth(
+
+  year,
+
+  month
+
+) {
 
   const wrapper =
-    document.createElement("article");
+    document.createElement(
+      "article"
+    );
+
 
   wrapper.className =
     "month-card";
 
 
   // ----------------------------------------------------------
-  // TÍTULO DO MÊS
+  // TÍTULO
   // ----------------------------------------------------------
 
   const title =
-    document.createElement("h2");
+    document.createElement(
+      "h2"
+    );
+
 
   title.textContent =
     `${monthNames[month]} ${year}`;
 
-  wrapper.appendChild(title);
+
+  wrapper.appendChild(
+    title
+  );
 
 
   // ----------------------------------------------------------
@@ -196,25 +340,41 @@ function createMonth(year, month) {
   // ----------------------------------------------------------
 
   const weekdays =
-    document.createElement("div");
+    document.createElement(
+      "div"
+    );
+
 
   weekdays.className =
     "weekdays";
 
 
-  weekdayNames.forEach(name => {
+  weekdayNames.forEach(
 
-    const cell =
-      document.createElement("span");
+    name => {
 
-    cell.textContent = name;
-
-    weekdays.appendChild(cell);
-
-  });
+      const cell =
+        document.createElement(
+          "span"
+        );
 
 
-  wrapper.appendChild(weekdays);
+      cell.textContent =
+        name;
+
+
+      weekdays.appendChild(
+        cell
+      );
+
+    }
+
+  );
+
+
+  wrapper.appendChild(
+    weekdays
+  );
 
 
   // ----------------------------------------------------------
@@ -222,78 +382,119 @@ function createMonth(year, month) {
   // ----------------------------------------------------------
 
   const daysGrid =
-    document.createElement("div");
+    document.createElement(
+      "div"
+    );
+
 
   daysGrid.className =
     "days-grid";
 
 
   const firstDay =
-    new Date(year, month, 1);
+    new Date(
+      year,
+      month,
+      1
+    );
 
+
+  // Calendário começa à segunda-feira.
 
   let startIndex =
     firstDay.getDay() - 1;
 
 
-  if (startIndex < 0) {
-    startIndex = 6;
+  if (
+    startIndex < 0
+  ) {
+
+    startIndex =
+      6;
+
   }
 
 
   // ----------------------------------------------------------
-  // ESPAÇOS ANTES DO DIA 1
+  // ESPAÇOS VAZIOS
   // ----------------------------------------------------------
 
   for (
+
     let i = 0;
+
     i < startIndex;
+
     i++
+
   ) {
 
     const blank =
-      document.createElement("div");
+      document.createElement(
+        "div"
+      );
+
 
     blank.className =
       "day-cell day-cell--blank";
 
-    daysGrid.appendChild(blank);
+
+    daysGrid.appendChild(
+      blank
+    );
 
   }
 
 
   const today =
-    startOfDay(new Date());
+    startOfDay(
+      new Date()
+    );
 
 
   const daysInMonth =
     new Date(
+
       year,
+
       month + 1,
+
       0
-    ).getDate();
+
+    )
+    .getDate();
 
 
   // ==========================================================
-  // CRIAR CADA DIA
+  // CRIAR DIAS
   // ==========================================================
 
   for (
+
     let day = 1;
+
     day <= daysInMonth;
+
     day++
+
   ) {
 
     const current =
       new Date(
+
         year,
+
         month,
+
         day
+
       );
 
 
     const key =
-      dateKey(current);
+      dateKey(
+        current
+      );
 
 
     const dayOfWeek =
@@ -301,34 +502,49 @@ function createMonth(year, month) {
 
 
     // --------------------------------------------------------
-    // IDENTIFICAR O TIPO DE DIA
+    // TIPO DE DIA
     // --------------------------------------------------------
 
     const isHoliday =
-      Object.prototype.hasOwnProperty.call(
-        HOLIDAYS,
-        key
-      );
+
+      Object
+        .prototype
+        .hasOwnProperty
+        .call(
+
+          HOLIDAYS,
+
+          key
+
+        );
 
 
     const isDayOff =
-      WEEKLY_DAYS_OFF.includes(
-        dayOfWeek
-      );
+
+      WEEKLY_DAYS_OFF
+        .includes(
+          dayOfWeek
+        );
 
 
     const isVacation =
-      VACATION_DAYS.includes(
-        key
-      );
+
+      VACATION_DISPLAY_DAYS
+        .includes(
+          key
+        );
 
 
     const isResignation =
-      key === RESIGNATION_KEY;
+
+      key ===
+      RESIGNATION_KEY;
 
 
     const isLastDay =
-      key === LAST_DAY_KEY;
+
+      key ===
+      LAST_DAY_KEY;
 
 
     // --------------------------------------------------------
@@ -336,24 +552,31 @@ function createMonth(year, month) {
     // --------------------------------------------------------
 
     const cell =
-      document.createElement("div");
+      document.createElement(
+        "div"
+      );
+
 
     cell.className =
       "day-cell";
 
 
     // ========================================================
-    // NOME DO FERIADO NO TOPO
+    // NOME DO FERIADO
     // ========================================================
 
-    if (isHoliday) {
+    if (
+      isHoliday
+    ) {
 
       const holiday =
         HOLIDAYS[key];
 
 
       const holidayName =
-        document.createElement("span");
+        document.createElement(
+          "span"
+        );
 
 
       holidayName.className =
@@ -380,18 +603,22 @@ function createMonth(year, month) {
 
 
     // ========================================================
-    // NÚMERO DO DIA OU SÍMBOLO DO FERIADO
+    // NÚMERO / SÍMBOLO
     // ========================================================
 
     const number =
-      document.createElement("span");
+      document.createElement(
+        "span"
+      );
 
 
     number.className =
       "day-number";
 
 
-    if (isHoliday) {
+    if (
+      isHoliday
+    ) {
 
       const holiday =
         HOLIDAYS[key];
@@ -409,7 +636,9 @@ function createMonth(year, month) {
       number.title =
         holiday.name;
 
-    } else {
+    }
+
+    else {
 
       number.textContent =
         day;
@@ -417,7 +646,9 @@ function createMonth(year, month) {
     }
 
 
-    cell.appendChild(number);
+    cell.appendChild(
+      number
+    );
 
 
     // ========================================================
@@ -425,8 +656,11 @@ function createMonth(year, month) {
     // ========================================================
 
     if (
+
       isDayOff &&
+
       !isVacation
+
     ) {
 
       cell.classList.add(
@@ -435,7 +669,9 @@ function createMonth(year, month) {
 
 
       const badge =
-        document.createElement("small");
+        document.createElement(
+          "small"
+        );
 
 
       badge.textContent =
@@ -453,7 +689,9 @@ function createMonth(year, month) {
     // FÉRIAS
     // ========================================================
 
-    if (isVacation) {
+    if (
+      isVacation
+    ) {
 
       cell.classList.remove(
         "day-cell--dayoff"
@@ -461,11 +699,16 @@ function createMonth(year, month) {
 
 
       const existingBadges =
-        cell.querySelectorAll("small");
+        cell.querySelectorAll(
+          "small"
+        );
 
 
       existingBadges.forEach(
-        badge => badge.remove()
+
+        badge =>
+          badge.remove()
+
       );
 
 
@@ -475,7 +718,9 @@ function createMonth(year, month) {
 
 
       const badge =
-        document.createElement("small");
+        document.createElement(
+          "small"
+        );
 
 
       badge.textContent =
@@ -490,7 +735,7 @@ function createMonth(year, month) {
 
 
     // ========================================================
-    // DIA PASSADO
+    // DIAS PASSADOS
     // ========================================================
 
     if (
@@ -503,7 +748,9 @@ function createMonth(year, month) {
 
 
       const cross =
-        document.createElement("span");
+        document.createElement(
+          "span"
+        );
 
 
       cross.className =
@@ -526,8 +773,10 @@ function createMonth(year, month) {
     // ========================================================
 
     if (
+
       current.getTime() ===
       today.getTime()
+
     ) {
 
       cell.classList.add(
@@ -538,10 +787,12 @@ function createMonth(year, month) {
 
 
     // ========================================================
-    // CARTA DE DEMISSÃO
+    // CARTA
     // ========================================================
 
-    if (isResignation) {
+    if (
+      isResignation
+    ) {
 
       cell.classList.add(
         "day-cell--resignation"
@@ -549,16 +800,23 @@ function createMonth(year, month) {
 
 
       const oldBadges =
-        cell.querySelectorAll("small");
+        cell.querySelectorAll(
+          "small"
+        );
 
 
       oldBadges.forEach(
-        badge => badge.remove()
+
+        badge =>
+          badge.remove()
+
       );
 
 
       const badge =
-        document.createElement("small");
+        document.createElement(
+          "small"
+        );
 
 
       badge.textContent =
@@ -576,7 +834,9 @@ function createMonth(year, month) {
     // LAST DAY
     // ========================================================
 
-    if (isLastDay) {
+    if (
+      isLastDay
+    ) {
 
       cell.classList.add(
         "day-cell--last"
@@ -584,16 +844,23 @@ function createMonth(year, month) {
 
 
       const oldBadges =
-        cell.querySelectorAll("small");
+        cell.querySelectorAll(
+          "small"
+        );
 
 
       oldBadges.forEach(
-        badge => badge.remove()
+
+        badge =>
+          badge.remove()
+
       );
 
 
       const badge =
-        document.createElement("small");
+        document.createElement(
+          "small"
+        );
 
 
       badge.textContent =
@@ -638,21 +905,33 @@ function renderCalendar() {
 
   let cursor =
     new Date(
-      CALENDAR_START.getFullYear(),
-      CALENDAR_START.getMonth(),
+
+      CALENDAR_START
+        .getFullYear(),
+
+      CALENDAR_START
+        .getMonth(),
+
       1
+
     );
 
 
   while (
-    cursor <= CALENDAR_END
+
+    cursor <=
+    CALENDAR_END
+
   ) {
 
     grid.appendChild(
 
       createMonth(
+
         cursor.getFullYear(),
+
         cursor.getMonth()
+
       )
 
     );
@@ -660,13 +939,21 @@ function renderCalendar() {
 
     cursor =
       new Date(
+
         cursor.getFullYear(),
+
         cursor.getMonth() + 1,
+
         1
+
       );
 
   }
 
+
+  // ----------------------------------------------------------
+  // DATA ATUAL NO FOOTER
+  // ----------------------------------------------------------
 
   document
     .getElementById(
@@ -675,12 +962,22 @@ function renderCalendar() {
     .textContent =
 
       new Intl.DateTimeFormat(
+
         "pt-PT",
+
         {
-          day: "2-digit",
-          month: "long",
-          year: "numeric"
+
+          day:
+            "2-digit",
+
+          month:
+            "long",
+
+          year:
+            "numeric"
+
         }
+
       )
       .format(
         new Date()
